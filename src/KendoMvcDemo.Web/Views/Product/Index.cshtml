@@ -1,19 +1,4 @@
-﻿
-@*@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-        columns.Bound(c => c.Name);
-      })
-      .Scrollable()
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Read(read => read.Action("Products_Read", "Product"))
-      )
-)*@
-
-
-@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
+﻿@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
       .Name("grid")
       .Columns(columns =>
       {

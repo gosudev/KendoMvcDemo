@@ -22,12 +22,46 @@ namespace KendoMvcDemo.Web.Controllers
             return View();
         }
 
-        public ActionResult Complaints_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult EditingPopup_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = _complaintService.GetAll().ToDataSourceResult(request, c => c);
+            DataSourceResult result = _complaintService.GetAll().ToDataSourceResult(request);
 
             return Json(result);
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, ComplaintViewModel product)
+        {
+            if (product != null && ModelState.IsValid)
+            {
+                //productService.Create(product);
+            }
+
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Update([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                //productService.Update(product);
+            }
+
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Destroy([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
+        {
+            if (model != null)
+            {
+                _complaintService.Destroy(model);
+            }
+
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
+
 
         protected override void Dispose(bool disposing)
         {

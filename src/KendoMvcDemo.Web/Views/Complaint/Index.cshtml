@@ -1,19 +1,42 @@
-﻿
-@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ComplaintViewModel>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-        columns.Bound(c => c.Title);
-        columns.Bound(c => c.WhatHappend);
-        columns.Bound(c => c.Company);
-        columns.Bound(c => c.SentDate);
-      })
-      .Pageable()
-      .Sortable()
-      .Scrollable()
-      .HtmlAttributes(new { style = "height:850px;" })
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Read(read => read.Action("Complaints_Read", "Complaint"))
-      )
+﻿@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ComplaintViewModel>()
+              .Name("grid")
+              .Columns(columns =>
+              {
+                  columns.Bound(c => c.Title);
+                  columns.Bound(c => c.WhatHappend);
+                  columns.Bound(c => c.Company);
+                  columns.Bound(c => c.SentDate);
+                  columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+              })
+              .ToolBar(toolbar => toolbar.Create())
+              .Editable(editable => editable.Mode(GridEditMode.PopUp))
+              .Pageable()
+              .Sortable()
+              .Scrollable()
+              .HtmlAttributes(new { style = "height:800px;" })
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .PageSize(10)
+                  .Events(events => events.Error("error_handler"))
+                  .Model(model => model.Id(p => p.ComplaintId))
+              .Create(update => update.Action("EditingPopup_Create", "Complaint"))
+              .Read(read => read.Action("EditingPopup_Read", "Complaint"))
+              .Update(update => update.Action("EditingPopup_Update", "Complaint"))
+              .Destroy(update => update.Action("EditingPopup_Destroy", "Complaint"))
+              )
 )
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
