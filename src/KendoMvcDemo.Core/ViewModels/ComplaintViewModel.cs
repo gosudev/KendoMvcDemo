@@ -18,6 +18,7 @@ namespace KendoMvcDemo.Core.ViewModels
         [DataType(DataType.Date)]
         [DisplayName("Sent Date")]
         public DateTime SentDate { get; set; }
+        [UIHint("ClientProduct")]
         public int ProductId { get; set; }
         public ProductViewModel Product { get; set; }
     }

@@ -1,0 +1,9 @@
+﻿
+@*@model KendoMvcDemo.Core.ViewModels.ProductViewModel*@
+@model int
+
+    @(Html.Kendo().DropDownListFor(m => m)
+              .DataValueField("ProductId")
+              .DataTextField("Name")
+              .BindTo((System.Collections.IEnumerable)ViewData["products"])
+    )

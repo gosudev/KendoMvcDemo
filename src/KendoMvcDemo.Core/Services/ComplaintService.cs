@@ -42,5 +42,22 @@ namespace KendoMvcDemo.Core.Services
                 _db.SaveChanges();
             }
         }
+
+        public void Update(ComplaintViewModel model)
+        {
+            var item = _db.Complaints.FirstOrDefault(x => x.ComplaintId == model.ComplaintId);
+            if (item != null)
+            {
+                item.Company = model.Company;
+                item.SentDate = model.SentDate;
+                item.Title = model.Title;
+                item.WhatHappend = model.WhatHappend;
+
+                item.ProductId = model.ProductId;
+
+                _db.Entry(item).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+        }
     }
 }

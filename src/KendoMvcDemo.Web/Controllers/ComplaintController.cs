@@ -17,6 +17,7 @@ namespace KendoMvcDemo.Web.Controllers
         {
             _complaintService = new ComplaintService(_db);
         }
+
         public ActionResult Index()
         {
             ViewData["products"] = _db.Products.Select(x => new ProductViewModel()
@@ -50,7 +51,7 @@ namespace KendoMvcDemo.Web.Controllers
         {
             if (model != null && ModelState.IsValid)
             {
-                //productService.Update(product);
+                _complaintService.Update(model);
             }
 
             return Json(new[] { model }.ToDataSourceResult(request, ModelState));
