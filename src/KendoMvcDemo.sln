@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoMvcDemo.Web", "KendoMvcDemo.Web\KendoMvcDemo.Web.csproj", "{1603492D-472C-438E-AEBE-5DEAB6E3AFB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoMvcDemo.Core", "KendoMvcDemo.Core\KendoMvcDemo.Core.csproj", "{8FA875DA-4E17-48B6-8C19-E6B3833D64DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1603492D-472C-438E-AEBE-5DEAB6E3AFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1603492D-472C-438E-AEBE-5DEAB6E3AFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1603492D-472C-438E-AEBE-5DEAB6E3AFB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA875DA-4E17-48B6-8C19-E6B3833D64DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA875DA-4E17-48B6-8C19-E6B3833D64DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA875DA-4E17-48B6-8C19-E6B3833D64DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA875DA-4E17-48B6-8C19-E6B3833D64DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
