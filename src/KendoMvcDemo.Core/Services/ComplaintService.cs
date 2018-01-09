@@ -9,7 +9,8 @@ namespace KendoMvcDemo.Core.Services
 {
     public class ComplaintService
     {
-        private DataContext _db;
+        private readonly DataContext _db;
+
         public ComplaintService(DataContext db)
         {
             _db = db;
@@ -58,6 +59,16 @@ namespace KendoMvcDemo.Core.Services
                 _db.Entry(item).State = EntityState.Modified;
                 _db.SaveChanges();
             }
+        }
+
+        public void Create(ComplaintViewModel model)
+        {
+            model.Product = new ProductViewModel() { ProductId = model.ProductId };
+            var entity = model.ConvertToDomainModel();
+            entity.Product = _db.Products.Find(model.ProductId);
+
+            _db.Complaints.Add(entity);
+            _db.SaveChanges();
         }
     }
 }

@@ -36,14 +36,14 @@ namespace KendoMvcDemo.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, ComplaintViewModel product)
+        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
         {
-            if (product != null && ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
-                //productService.Create(product);
+                _complaintService.Create(model);
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
