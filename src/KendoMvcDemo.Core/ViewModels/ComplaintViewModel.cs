@@ -13,7 +13,6 @@ namespace KendoMvcDemo.Core.ViewModels
         public string WhatHappend { get; set; }
         public string Company { get; set; }
         public DateTime SentDate { get; set; }
-
         public int ProductId { get; set; }
     }
 }
