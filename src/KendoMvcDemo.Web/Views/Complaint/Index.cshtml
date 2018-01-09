@@ -1,0 +1,16 @@
+﻿
+@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ComplaintViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Title);
+        columns.Bound(c => c.WhatHappend);
+        columns.Bound(c => c.Company);
+        columns.Bound(c => c.SentDate);
+      })
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Read(read => read.Action("Complaints_Read", "Complaint"))
+      )
+)
