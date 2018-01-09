@@ -21,14 +21,14 @@
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
       })
       .ToolBar(toolbar => toolbar.Create())
-      .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("test").DisplayDeleteConfirmation("Test"))
+      .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Confirm").DisplayDeleteConfirmation("Confirm"))
       .Pageable()
       .Sortable()
       .Scrollable()
-      .HtmlAttributes(new { style = "height:550px;" })
+      .HtmlAttributes(new { style = "height:850px;" })
       .DataSource(dataSource => dataSource
           .Ajax()
-          .PageSize(20)
+          .PageSize(10)
           .Events(events => events.Error("error_handler"))
           .Model(model => model.Id(p => p.ProductId))
           .Create(update => update.Action("EditingInline_Create", "Product"))

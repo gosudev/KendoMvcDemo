@@ -8,7 +8,10 @@
         columns.Bound(c => c.Company);
         columns.Bound(c => c.SentDate);
       })
+      .Pageable()
+      .Sortable()
       .Scrollable()
+      .HtmlAttributes(new { style = "height:850px;" })
       .DataSource(dataSource => dataSource
           .Ajax()
           .Read(read => read.Action("Complaints_Read", "Complaint"))

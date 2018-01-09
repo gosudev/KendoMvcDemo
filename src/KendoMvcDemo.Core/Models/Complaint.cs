@@ -9,7 +9,6 @@ namespace KendoMvcDemo.Core.Models
     public class Complaint
     {
         public int ComplaintId { get; set; }
-        public int Id { get; set; }
         public string Title { get; set; }
         public string WhatHappend { get; set; }
         public string Company { get; set; }

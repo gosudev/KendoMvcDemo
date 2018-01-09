@@ -3,14 +3,20 @@ using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using KendoMvcDemo.Core.Models;
- using KendoMvcDemo.Core.ViewModels;
+using KendoMvcDemo.Core.Services;
+using KendoMvcDemo.Core.ViewModels;
 
 namespace KendoMvcDemo.Web.Controllers
 {
     public class ComplaintController : Controller
     {
-        private DataContext db = new DataContext();
+        private readonly DataContext _db = new DataContext();
+        private readonly ComplaintService _complaintService;
 
+        public ComplaintController()
+        {
+            _complaintService = new ComplaintService(_db);
+        }
         public ActionResult Index()
         {
             return View();
@@ -18,23 +24,14 @@ namespace KendoMvcDemo.Web.Controllers
 
         public ActionResult Complaints_Read([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<Complaint> complaints = db.Complaints;
-            DataSourceResult result = complaints.ToDataSourceResult(request, c => new ComplaintViewModel 
-            {
-                Id = c.Id,
-                Title = c.Title,
-                WhatHappend = c.WhatHappend,
-                Company = c.Company,
-                SentDate = c.SentDate,
-                ProductId = c.ProductId
-            });
+            DataSourceResult result = _complaintService.GetAll().ToDataSourceResult(request, c => c);
 
             return Json(result);
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }
