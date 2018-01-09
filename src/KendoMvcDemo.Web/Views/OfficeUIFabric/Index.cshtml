@@ -1,0 +1,48 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="ms-Grid">
+    <div class="ms-Grid-row">
+        <div class="ms-Grid-col ms-u-sm6 block">
+            @(Html.Kendo().Button()
+                  .Name("primaryTextButton")
+                  .HtmlAttributes(new { type = "button", @class = "k-primary" })
+                  .Content("Primary Button"))
+
+            @(Html.Kendo().Button()
+                  .Name("textButton")
+                  .HtmlAttributes(new { type = "button" })
+                  .Content("Button"))
+        </div>
+        <div class="ms-Grid-col ms-u-sm6 block">
+            <button class="ms-Button ms-Button--primary">
+                <span class="ms-Button-label">Create Account</span> 
+            </button>
+            <button class="ms-Button">
+                <span class="ms-Button-label">Create Account</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="ms-Grid-row">
+        <div class="ms-Grid-col ms-u-sm6 block">
+        </div>
+        <div class="ms-Grid-col ms-u-sm6 block">
+        </div>
+    </div>
+</div>
+
+@*https://codepen.io/andrewconnell/pen/NGNQbR*@
+<style>
+    .block {
+        /*padding-top: 10px;
+        padding-bottom: 10px;
+        border: 1px black solid;
+        text-align: center;
+        color: white;
+        background-color: gray;*/
+    }
+</style>
