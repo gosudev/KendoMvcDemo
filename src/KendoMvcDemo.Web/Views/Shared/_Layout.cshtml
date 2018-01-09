@@ -5,99 +5,108 @@
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 
     <style>
-        .k-header h1 {
-            margin: 0;
-            padding: 30px 15px;
-            font-size: 32px;
-            font-weight: lighter;
-        }
+            .k-header h1 {
+                margin: 0;
+                padding: 30px 15px;
+                font-size: 32px;
+                font-weight: lighter;
+            }
 
-        /* Sticky footer styles
-    -------------------------------------------------- */
-        html {
-            position: relative;
-            min-height: 100%;
-        }
+            /* Sticky footer styles
+        -------------------------------------------------- */
+            html {
+                position: relative;
+                min-height: 100%;
+            }
 
-        body {
-            /* Margin bottom by footer height */
-            margin-bottom: 60px;
-        }
+            body {
+                /* Margin bottom by footer height */
+                margin-bottom: 60px;
+            }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 60px;
-            background-color: #f5f5f5;
-        }
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                /* Set the fixed height of the footer here */
+                height: 60px;
+                background-color: #f5f5f5;
+            }
 
-        .container-fluid .text-muted {
-            margin: 20px 0;
-        }
+            .container-fluid .text-muted {
+                margin: 20px 0;
+            }
 
-        .placeholders {
-            margin: 30px auto;
-        }
+            .placeholders {
+                margin: 30px auto;
+            }
 
-        .placeholder img {
-            display: inline-block;
-        }
+            .placeholder img {
+                display: inline-block;
+            }
 
-        p .k-button {
-            margin: 0 15px 0 0;
-        }
-        .btn-toggle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: none;
-            height: 48px;
-        }
+            p .k-button {
+                margin: 0 15px 0 0;
+            }
 
-        .btn-toggle .k-icon {
-            opacity: 1;
-        }
+            .btn-toggle {
+                position: absolute;
+                top: 0;
+                left: 0;
+                box-shadow: none;
+                height: 48px;
+            }
 
-        .btn-toggle,
-        .k-primary.btn-toggle:hover,
-        .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]),
-        .btn-toggle:focus:not(.k-state-disabled):not([disabled]) {
-            box-shadow: none;
-            border-radius: 0;
-        }
+                .btn-toggle .k-icon {
+                    opacity: 1;
+                }
 
-        .btn-toggle .k-i-hbars,
-        .k-primary.btn-toggle:hover .k-i-hbars,
-        .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]) .k-i-hbars,
-        .btn-toggle:focus:not(.k-state-disabled):not([disabled]) .k-i-hbars {
-            background-position: -80px -32px;
-        }
-        @@media (max-width: 768px) {
-          .k-item {
-            display: block;
-            clear: both;
-            float: none;
-            width: 100%;
-          }
+                .btn-toggle,
+                .k-primary.btn-toggle:hover,
+                .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]),
+                .btn-toggle:focus:not(.k-state-disabled):not([disabled]) {
+                    box-shadow: none;
+                    border-radius: 0;
+                }
 
-          .k-header h1 {
-            margin: 0;
-            padding: 16px 15px 14px 60px;
-            font-size: 18px;
-            font-weight: lighter;
-           }  
-        }
+                    .btn-toggle .k-i-hbars,
+                    .k-primary.btn-toggle:hover .k-i-hbars,
+                    .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]) .k-i-hbars,
+                    .btn-toggle:focus:not(.k-state-disabled):not([disabled]) .k-i-hbars {
+                        background-position: -80px -32px;
+                    }
+
+            @@media (max-width: 768px) {
+                .k-item {
+                    display: block;
+                    clear: both;
+                    float: none;
+                    width: 100%;
+                }
+
+                .k-header h1 {
+                    margin: 0;
+                    padding: 16px 15px 14px 60px;
+                    font-size: 18px;
+                    font-weight: lighter;
+                }
+            }
     </style>
-	<link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" rel="stylesheet" type="text/css" />
-	<script src="https://kendo.cdn.telerik.com/2017.3.1026/js/jquery.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2017.3.1026/js/jszip.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
-	<script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.aspnetmvc.min.js"></script>
-	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css">
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css">
+
+    <link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.aspnetmvc.min.js"></script>
+
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -110,6 +119,7 @@
                   {
                       items.Add().Text("Complaints").Action("Index", "Complaint");
                       items.Add().Text("Products").Action("Index", "Product");
+                      items.Add().Text("Office UI Fabric").Action("Index", "OfficeUIFabric");
                   })
                 )
             </div>

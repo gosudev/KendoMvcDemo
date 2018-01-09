@@ -110,6 +110,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComplaintController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OfficeUIFabricController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -170,6 +171,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Complaint\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ClientProduct.cshtml" />
+    <Content Include="Views\OfficeUIFabric\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
