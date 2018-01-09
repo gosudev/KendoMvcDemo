@@ -1,5 +1,5 @@
 ﻿
-@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
+@*@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
@@ -10,4 +10,45 @@
           .Ajax()
           .Read(read => read.Action("Products_Read", "Product"))
       )
-)
+)*@
+
+
+@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(p => p.Name);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+      })
+      .ToolBar(toolbar => toolbar.Create())
+      .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("test").DisplayDeleteConfirmation("Test"))
+      .Pageable()
+      .Sortable()
+      .Scrollable()
+      .HtmlAttributes(new { style = "height:550px;" })
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .PageSize(20)
+          .Events(events => events.Error("error_handler"))
+          .Model(model => model.Id(p => p.ProductId))
+          .Create(update => update.Action("EditingInline_Create", "Product"))
+          .Read(read => read.Action("EditingInline_Read", "Product"))
+          .Update(update => update.Action("EditingInline_Update", "Product"))
+          .Destroy(update => update.Action("EditingInline_Destroy", "Product"))
+      )
+      )
+<script type="text/javascript">
+    function error_handler(e) {    
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });        
+            alert(message);
+        }
+    }
+</script>

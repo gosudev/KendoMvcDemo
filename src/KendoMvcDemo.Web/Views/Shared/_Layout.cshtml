@@ -102,18 +102,14 @@
 <body>
     <div class="container-fluid">
         <div class="row k-header">
-            <h1>Project Title</h1>
+            <h1>Kendo Mvc Demo</h1>
             <div id="responsive-panel">
                 @(Html.Kendo().Menu()
                   .Name("Menu")
                   .Items(items =>
                   {
-                      items.Add().Text("Item 1");
-                      items.Add().Text("Item 2");
-                      items.Add().Text("Item 3");
-                      items.Add().Text("Item 4");
-                      items.Add().Text("Item 5");
-                      items.Add().Text("Disabled item").Enabled(false);
+                      items.Add().Text("Complaints").Action("Index", "Complaint");
+                      items.Add().Text("Products").Action("Index", "Product");
                   })
                 )
             </div>
@@ -134,7 +130,7 @@
 
     <footer class="footer">
         <div class="container-fluid">
-            <p class="text-muted">Copyright © 2002-2015 Telerik. All rights reserved.</p>
+            <p class="text-muted">Copyright © 2017 GosuDev. All rights reserved.</p>
         </div>
     </footer>
 

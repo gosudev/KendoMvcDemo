@@ -51,7 +51,7 @@ namespace KendoMvcDemo.Core.Models
                     Company = $"Company {i}",
                     SentDate = DateTime.Now.AddDays(-i),
                     Title = $"Complaint {i}",
-                    WhatHappend = "Explanation text {i}",
+                    WhatHappend = $"Explanation text {i}",
                     Product = product
                 };
 
