@@ -4,6 +4,7 @@
               {
                   columns.Bound(c => c.Title);
                   columns.Bound(c => c.WhatHappend);
+                  columns.Bound(p => p.Product).ClientTemplate("#=Product.Name#");
                   columns.Bound(c => c.Company);
                   columns.Bound(c => c.SentDate);
                   columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);

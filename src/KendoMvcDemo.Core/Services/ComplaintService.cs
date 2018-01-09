@@ -25,7 +25,11 @@ namespace KendoMvcDemo.Core.Services
                 Company = x.Company,
                 SentDate = x.SentDate,
                 ProductId = x.ProductId,
-                Product = x.Product
+                Product = new ProductViewModel()
+                {
+                    Name = x.Product.Name,
+                    ProductId = x.Product.ProductId
+                }
             }).ToList();
         }
 

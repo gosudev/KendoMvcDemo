@@ -19,6 +19,11 @@ namespace KendoMvcDemo.Web.Controllers
         }
         public ActionResult Index()
         {
+            ViewData["products"] = _db.Products.Select(x => new ProductViewModel()
+            {
+                ProductId = x.ProductId,
+                Name = x.Name
+            });
             return View();
         }
 

@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using KendoMvcDemo.Core.Models;
 
 namespace KendoMvcDemo.Core.ViewModels
 {
     public class ComplaintViewModel
     {
+        [DisplayName("Number")]
+        [ScaffoldColumn(false)]
         public int ComplaintId { get; set; }
         public string Title { get; set; }
+        [DisplayName("What Happend")]
         public string WhatHappend { get; set; }
         public string Company { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayName("Sent Date")]
         public DateTime SentDate { get; set; }
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public ProductViewModel Product { get; set; }
     }
 }
