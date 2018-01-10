@@ -25,6 +25,7 @@ namespace KendoMvcDemo.Web.Controllers
                 ProductId = x.ProductId,
                 Name = x.Name
             });
+
             return View();
         }
 

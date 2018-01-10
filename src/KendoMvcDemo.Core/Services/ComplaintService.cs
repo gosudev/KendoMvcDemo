@@ -58,14 +58,22 @@ namespace KendoMvcDemo.Core.Services
 
                 _db.Entry(item).State = EntityState.Modified;
                 _db.SaveChanges();
+
+                var product = _db.Products.Find(model.ProductId);
+                if (product == null) throw new ArgumentNullException("product");
+
+                model.Product = new ProductViewModel() { ProductId = product.ProductId, Name = product.Name };
             }
         }
 
         public void Create(ComplaintViewModel model)
         {
-            model.Product = new ProductViewModel() { ProductId = model.ProductId };
+            var product = _db.Products.Find(model.ProductId);
+
+            model.Product = new ProductViewModel() { ProductId = model.ProductId, Name = product?.Name };
+
             var entity = model.ConvertToDomainModel();
-            entity.Product = _db.Products.Find(model.ProductId);
+            entity.Product = product;
 
             _db.Complaints.Add(entity);
             _db.SaveChanges();
