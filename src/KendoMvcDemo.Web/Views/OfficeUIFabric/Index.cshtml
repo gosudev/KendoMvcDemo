@@ -1,32 +1,34 @@
 ﻿@model dynamic
 
-@{
-    ViewBag.Title = "title";
-}
-
 <div class="ms-Grid">
     <div class="ms-Grid-row">
         <div class="ms-Grid-col ms-u-sm6 block">
+            Kendo Office565 Theme
+        </div>
+        <div class="ms-Grid-col ms-u-sm6 block">
+            Office Fabric
+        </div>
+        <div class="ms-Grid-col ms-u-sm6 block">
             @(Html.Kendo().Button()
-                  .Name("primaryTextButton")
-                  .HtmlAttributes(new { type = "button", @class = "k-primary" })
-                  .Content("Primary Button"))
+            .Name("primaryButton")
+            .HtmlAttributes(new { type = "button", @class = "k-primary" })
+            .Content("Primary Button"))
 
             @(Html.Kendo().Button()
-                  .Name("textButton")
-                  .HtmlAttributes(new { type = "button" })
-                  .Content("Button"))
+            .Name("textButton")
+            .HtmlAttributes(new { type = "button" })
+            .Content("Button"))
         </div>
         <div class="ms-Grid-col ms-u-sm6 block">
             <button class="ms-Button ms-Button--primary">
-                <span class="ms-Button-label">Create Account</span> 
+                <span class="ms-Button-label">Primary Button</span>
             </button>
             <button class="ms-Button">
-                <span class="ms-Button-label">Create Account</span>
+                <span class="ms-Button-label">Button</span>
             </button>
         </div>
     </div>
-    
+
     <div class="ms-Grid-row">
         <div class="ms-Grid-col ms-u-sm6 block">
         </div>
