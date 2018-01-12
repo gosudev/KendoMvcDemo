@@ -3,7 +3,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using KendoMvcDemo.Core.Models;
+using KendoMvcDemo.Core.Persistence;
+using KendoMvcDemo.Core.Persistence.Models;
 using KendoMvcDemo.Core.ViewModels;
 
 namespace KendoMvcDemo.Web.Controllers

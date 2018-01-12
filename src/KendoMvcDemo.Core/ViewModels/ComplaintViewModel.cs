@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KendoMvcDemo.Core.Models;
+using KendoMvcDemo.Core.Persistence.Models;
 
 namespace KendoMvcDemo.Core.ViewModels
 {
@@ -31,6 +31,9 @@ namespace KendoMvcDemo.Core.ViewModels
 
         public ProductViewModel Product { get; set; }
 
+        [ScaffoldColumn(false)]
+        public string SummarySearchColumn { get; set; }
+
         public Complaint ConvertToDomainModel()
         {
             return new Complaint()
@@ -40,6 +43,7 @@ namespace KendoMvcDemo.Core.ViewModels
                 WhatHappend = this.WhatHappend,
                 Company = this.Company,
                 SentDate = this.SentDate,
+                SummarySearchColumn = this.SummarySearchColumn,
                 ProductId = this.ProductId,
                 Product = this.Product.ConvertToDomainModel()
             };

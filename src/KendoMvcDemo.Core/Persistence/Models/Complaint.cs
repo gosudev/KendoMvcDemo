@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KendoMvcDemo.Core.Models
+namespace KendoMvcDemo.Core.Persistence.Models
 {
+    [Table("ComplaintViewSearch")]
     public class Complaint
     {
         public int ComplaintId { get; set; }
@@ -10,6 +12,9 @@ namespace KendoMvcDemo.Core.Models
         public string Company { get; set; }
         public DateTime SentDate { get; set; }
         public int ProductId { get; set; }
+
+        public string SummarySearchColumn { get; set; }
+
         public Product Product { get; set; }
     }
 }

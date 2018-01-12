@@ -36,14 +36,14 @@ INSERT INTO [dbo].[Product] ([Name]) VALUES ('DELL LATITUDE E5430 I5 4 GB RAM 24
 GO
 
 INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 1','Missing software','Apple' ,getdate() ,1)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 1','Missing software','Apple' ,getdate() ,2)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 1','Missing software','Apple' ,getdate() ,3)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 1','Missing software','Apple' ,getdate() ,4)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 2','Missing software','Apple' ,getdate() ,2)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 3','Missing software','Apple' ,getdate() ,3)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 4','Missing software','Apple' ,getdate() ,4)
 
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 2','Missing hardware','IBM' ,getdate() ,1)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 2','Missing hardware','IBM' ,getdate() ,2)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 2','Missing hardware','IBM' ,getdate() ,3)
-INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 2','Missing hardware','IBM' ,getdate() ,4)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 5','Missing hardware','IBM' ,getdate() ,1)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 6','Missing hardware','IBM' ,getdate() ,2)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 7','Missing hardware','IBM' ,getdate() ,3)
+INSERT INTO [dbo].[Complaint] ([Title],[WhatHappend],[Company],[SentDate],[ProductId])  VALUES ('Complaint 8','Missing hardware','IBM' ,getdate() ,4)
 
 /* Show data */
 SELECT * FROM [dbo].[Product]
@@ -90,7 +90,7 @@ GO
 /* Check if search works */
 SELECT * from [ComplaintViewSearch]
 WHERE
-FREETEXT([SummarySearchColumn],  'E5430') 
+FREETEXT([SummarySearchColumn],  'Apple E5430') 
 
 --SELECT * FROM sys.indexes i JOIN sys.objects o ON i.object_id = o.object_id WHERE is_ms_shipped = 0;   
 --SELECT * FROM sys.fulltext_catalogs;   

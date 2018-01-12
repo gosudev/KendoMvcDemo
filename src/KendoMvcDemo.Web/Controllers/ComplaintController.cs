@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using KendoMvcDemo.Core.Models;
+using KendoMvcDemo.Core.Persistence;
 using KendoMvcDemo.Core.Services;
 using KendoMvcDemo.Core.ViewModels;
 
@@ -12,6 +12,7 @@ namespace KendoMvcDemo.Web.Controllers
     {
         private readonly DataContext _db = new DataContext();
         private readonly ComplaintService _complaintService;
+        private const string FORM_SEARCH_FILTER_KEY = "FORM_SEARCH_FILTER_KEY";
 
         public ComplaintController()
         {
@@ -20,18 +21,16 @@ namespace KendoMvcDemo.Web.Controllers
 
         public ActionResult Index()
         {
-            ViewData["products"] = _db.Products.Select(x => new ProductViewModel()
-            {
-                ProductId = x.ProductId,
-                Name = x.Name
-            });
+            PopulateProductsDropdown();
 
             return View();
         }
 
         public ActionResult EditingPopup_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = _complaintService.GetAll().ToDataSourceResult(request);
+            string searchTerm = TempData["FORM_SEARCH_FILTER_KEY"] as string;
+
+            DataSourceResult result = _complaintService.Search(searchTerm).ToDataSourceResult(request);
 
             return Json(result);
         }
@@ -69,6 +68,24 @@ namespace KendoMvcDemo.Web.Controllers
             return Json(new[] { model }.ToDataSourceResult(request, ModelState));
         }
 
+        [HttpPost]
+        public ActionResult Search(FormCollection formData)
+        {
+            TempData["FORM_SEARCH_FILTER_KEY"] = formData["TextBoxSearchData"];
+
+            PopulateProductsDropdown();
+
+            return View("Index");
+        }
+
+        private void PopulateProductsDropdown()
+        {
+            ViewData["products"] = _db.Products.Select(x => new ProductViewModel()
+            {
+                ProductId = x.ProductId,
+                Name = x.Name
+            });
+        }
 
         protected override void Dispose(bool disposing)
         {

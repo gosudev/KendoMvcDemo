@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using KendoMvcDemo.Core.Models;
+using KendoMvcDemo.Core.Persistence;
 using KendoMvcDemo.Core.ViewModels;
 
 namespace KendoMvcDemo.Core.Services
@@ -16,9 +16,17 @@ namespace KendoMvcDemo.Core.Services
             _db = db;
         }
 
-        public IList<ComplaintViewModel> GetAll()
+        public IList<ComplaintViewModel> Search(string searchTerm)
         {
-            return _db.Complaints.Include("Product").Select(x => new ComplaintViewModel()
+            var query = _db.Complaints.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                searchTerm = FtsInterceptor.Fts(searchTerm);
+                query = query.Where(x => x.SummarySearchColumn.Contains(searchTerm));
+            }
+
+            return query.Select(x => new ComplaintViewModel()
             {
                 ComplaintId = x.ComplaintId,
                 Title = x.Title,

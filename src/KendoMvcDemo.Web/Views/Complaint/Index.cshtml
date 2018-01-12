@@ -1,4 +1,16 @@
-﻿@using KendoMvcDemo.Core.ViewModels
+﻿@using (Html.BeginForm("Search", "Complaint", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Filter</legend>
+        <label class="k-form-field">
+            <input name="TextBoxSearchData" class="k-textbox" placeholder="Search term" />
+        </label>
+        <button  button type="submit" class="k-button k-primary">Search</button>
+    </fieldset>
+}
+
+<br/>
+@using KendoMvcDemo.Core.ViewModels
 @(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ComplaintViewModel>()
       .Name("grid")
       .Columns(columns =>
@@ -19,7 +31,7 @@
       .Pageable()
       .Sortable()
       .Scrollable()
-      .HtmlAttributes(new {style = "height:600px;"})
+      .HtmlAttributes(new { style = "height:600px;" })
       .DataSource(dataSource => dataSource
           .Ajax()
           .PageSize(10)
@@ -32,7 +44,7 @@
                           {
                               model.Id(p => p.ComplaintId);
                               model.Field(x => x.Product).DefaultValue(new ProductViewModel());
-                              model.Field(x=>x.Company).DefaultValue("");
+                              model.Field(x => x.Company).DefaultValue("");
                           })
                       .Create(update => update.Action("EditingPopup_Create", "Complaint"))
                       .Read(read => read.Action("EditingPopup_Read", "Complaint"))
