@@ -41,24 +41,25 @@ namespace KendoMvcDemo.Core.Persistence
             for (int i = 0; i < cmd.Parameters.Count; i++)
             {
                 DbParameter parameter = cmd.Parameters[i];
+
                 if (parameter.DbType.In(DbType.String, DbType.AnsiString, DbType.StringFixedLength, DbType.AnsiStringFixedLength))
                 {
                     if (parameter.Value == DBNull.Value)
                         continue;
 
                     var value = (string)parameter.Value;
-                    if (value.IndexOf(FullTextPrefix) >= 0)
+                    if (value.IndexOf(FullTextPrefix, StringComparison.Ordinal) >= 0)
                     {
                         parameter.Size = 4096;
                         parameter.DbType = DbType.AnsiStringFixedLength;
 
-                        value = value.Replace(FullTextPrefix, ""); // remove prefix we added n linq query
+                        value = value.Replace(FullTextPrefix, string.Empty);
                         value = value.Substring(1, value.Length - 2); // remove %% escaping by linq translator from string.Contains to sql LIKE
 
                         parameter.Value = value;
 
                         cmd.CommandText = Regex.Replace(text, $@"\[(\w*)\].\[(\w*)\]\s*LIKE\s*@{parameter.ParameterName}\s?(?:ESCAPE N?'~')",
-                            $@"contains([$1].[$2], @{parameter.ParameterName})");
+                            $@"FREETEXT([$1].[$2], @{parameter.ParameterName})");
 
                         if (text == cmd.CommandText)
                             throw new Exception("FTS was not replaced on: " + text);
@@ -70,7 +71,7 @@ namespace KendoMvcDemo.Core.Persistence
         }
     }
 
-    static class LanguageExtensions
+    static class CollectionExtensions
     {
         public static bool In<T>(this T source, params T[] list)
         {
