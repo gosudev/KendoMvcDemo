@@ -46,10 +46,10 @@
                               model.Field(x => x.Product).DefaultValue(new ProductViewModel());
                               model.Field(x => x.Company).DefaultValue("");
                           })
-                      .Create(update => update.Action("EditingPopup_Create", "Complaint"))
-                      .Read(read => read.Action("EditingPopup_Read", "Complaint"))
-                      .Update(update => update.Action("EditingPopup_Update", "Complaint"))
-                      .Destroy(update => update.Action("EditingPopup_Destroy", "Complaint"))
+                      .Create(update => update.Action("Create", "Complaint"))
+                      .Read(read => read.Action("Read", "Complaint"))
+                      .Update(update => update.Action("Update", "Complaint"))
+                      .Destroy(update => update.Action("Destroy", "Complaint"))
                       )
 )
 <script type="text/javascript">

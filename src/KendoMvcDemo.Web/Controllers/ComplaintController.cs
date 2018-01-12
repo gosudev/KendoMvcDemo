@@ -26,7 +26,7 @@ namespace KendoMvcDemo.Web.Controllers
             return View();
         }
 
-        public ActionResult EditingPopup_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
             string searchTerm = TempData["FORM_SEARCH_FILTER_KEY"] as string;
 
@@ -36,7 +36,7 @@ namespace KendoMvcDemo.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
+        public ActionResult Create([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
         {
             if (model != null && ModelState.IsValid)
             {
@@ -47,7 +47,7 @@ namespace KendoMvcDemo.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Update([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
+        public ActionResult Update([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
         {
             if (model != null && ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace KendoMvcDemo.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Destroy([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
+        public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, ComplaintViewModel model)
         {
             if (model != null)
             {
