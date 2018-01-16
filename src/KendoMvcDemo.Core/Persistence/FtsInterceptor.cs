@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Text.RegularExpressions;
+using KendoMvcDemo.Core.Extensions;
 
 namespace KendoMvcDemo.Core.Persistence
 {
@@ -68,14 +69,6 @@ namespace KendoMvcDemo.Core.Persistence
                     }
                 }
             }
-        }
-    }
-
-    static class CollectionExtensions
-    {
-        public static bool In<T>(this T source, params T[] list)
-        {
-            return (list as IList<T>).Contains(source);
         }
     }
 }
