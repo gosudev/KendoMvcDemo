@@ -32,5 +32,6 @@ namespace KendoMvcDemo.Core.Persistence
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
+        public DbSet<ComplaintSearch> ComplaintSearches{ get; set; }
     }
 }

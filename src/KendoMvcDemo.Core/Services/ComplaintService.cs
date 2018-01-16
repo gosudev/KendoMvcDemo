@@ -18,7 +18,7 @@ namespace KendoMvcDemo.Core.Services
 
         public IList<ComplaintViewModel> Search(string searchTerm)
         {
-            var query = _db.Complaints.AsQueryable();
+            var query = _db.ComplaintSearches.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {

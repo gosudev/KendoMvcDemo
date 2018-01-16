@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KendoMvcDemo.Core.Persistence.Models
 {
+    [Table("Product")]
     public class Product
     {
         public int ProductId { get; set; }

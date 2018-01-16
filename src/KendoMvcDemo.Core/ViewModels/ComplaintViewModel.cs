@@ -43,7 +43,7 @@ namespace KendoMvcDemo.Core.ViewModels
                 WhatHappend = this.WhatHappend,
                 Company = this.Company,
                 SentDate = this.SentDate,
-                SummarySearchColumn = this.SummarySearchColumn,
+                //SummarySearchColumn = this.SummarySearchColumn,
                 ProductId = this.ProductId,
                 Product = this.Product.ConvertToDomainModel()
             };
