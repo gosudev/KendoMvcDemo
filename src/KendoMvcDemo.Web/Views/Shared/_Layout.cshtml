@@ -41,50 +41,58 @@
     <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.aspnetmvc.min.js"></script>
     <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    
+    <script src="https://kendo.cdn.telerik.com/2017.1.223/js/cultures/kendo.culture.en-GB.min.js"></script>
+    <script type="text/javascript">
+        //set current to the "en-GB" culture script
+        kendo.culture("en-GB");
+    </script>
+ 
 </head>
 <body>
+<div>
+    <div class="row k-header">
+        <h1>Kendo Mvc Demo</h1>
+        <div id="responsive-panel">
+            @(Html.Kendo().Menu()
+                  .Name("Menu")
+                  .Items(items =>
+                  {
+                      items.Add().Text("Complaints").Action("Index", "Complaint");
+                      items.Add().Text("Products").Action("Index", "Product");
+                      items.Add().Text("Office UI Fabric").Action("Index", "OfficeUIFabric");
+                  })
+                  )
+        </div>
+    </div>
+</div>
+
+@RenderBody()
+
+
+<div class="ms-Grid">
+    <div class="ms-Grid-row">
+    </div>
+</div>
+
+<footer class="footer">
     <div>
-        <div class="row k-header">
-            <h1>Kendo Mvc Demo</h1>
-            <div id="responsive-panel">
-                @(Html.Kendo().Menu()
-                .Name("Menu")
-                .Items(items =>
-                {
-                    items.Add().Text("Complaints").Action("Index", "Complaint");
-                    items.Add().Text("Products").Action("Index", "Product");
-                    items.Add().Text("Office UI Fabric").Action("Index", "OfficeUIFabric");
-                })
-                )
-            </div>
-        </div>
+        <p class="text-muted">Copyright © 2017 GosuDev. All rights reserved.</p>
     </div>
+</footer>
 
-    @RenderBody()
-
-
-    <div class="ms-Grid">
-        <div class="ms-Grid-row">
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div>
-            <p class="text-muted">Copyright © 2017 GosuDev. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        $(document).ready(function () {
-            $("#responsive-panel").kendoResponsivePanel({
-                breakpoint: 768,
-                autoClose: false,
-                orientation: "top"
-            });
+<script>
+    $(document).ready(function() {
+        $("#responsive-panel").kendoResponsivePanel({
+            breakpoint: 768,
+            autoClose: false,
+            orientation: "top"
         });
-        function onclick(e) {
-            $("#responsive-panel").getKendoResponsivePanel().toggle();
-        }
-    </script>
+    });
+
+    function onclick(e) {
+        $("#responsive-panel").getKendoResponsivePanel().toggle();
+    }
+</script>
 </body>
 </html>
