@@ -1,38 +1,38 @@
 ﻿@(Html.Kendo().Grid<KendoMvcDemo.Core.ViewModels.ProductViewModel>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-          columns.Bound(p => p.Name);
-          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
-      })
-      .ToolBar(toolbar => toolbar.Create())
-      .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Confirm").DisplayDeleteConfirmation("Confirm"))
-      .Pageable()
-      .Sortable()
-      .Scrollable()
-      .HtmlAttributes(new { style = "height:600px;" })
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .PageSize(10)
-          .Events(events => events.Error("error_handler"))
-          .Model(model => model.Id(p => p.ProductId))
-          .Create(update => update.Action("EditingInline_Create", "Product"))
-          .Read(read => read.Action("EditingInline_Read", "Product"))
-          .Update(update => update.Action("EditingInline_Update", "Product"))
-          .Destroy(update => update.Action("EditingInline_Destroy", "Product"))
-      )
-      )
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(p => p.Name);
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+          })
+          .ToolBar(toolbar => toolbar.Create())
+          .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Confirm").DisplayDeleteConfirmation("Confirm"))
+          .Pageable()
+          .Sortable()
+          .Scrollable()
+          .HtmlAttributes(new { style = "height:600px;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .PageSize(10)
+              .Events(events => events.Error("error_handler"))
+              .Model(model => model.Id(p => p.ProductId))
+              .Create(update => update.Action("Create", "Product"))
+              .Read(read => read.Action("Read", "Product"))
+              .Update(update => update.Action("Update", "Product"))
+              .Destroy(update => update.Action("Delete", "Product"))
+          )
+)
 <script type="text/javascript">
-    function error_handler(e) {    
+    function error_handler(e) {
         if (e.errors) {
             var message = "Errors:\n";
             $.each(e.errors, function (key, value) {
                 if ('errors' in value) {
-                    $.each(value.errors, function() {
+                    $.each(value.errors, function () {
                         message += this + "\n";
                     });
                 }
-            });        
+            });
             alert(message);
         }
     }
