@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using Autofac;
 using BusinessLayer.Model.Repository;
@@ -10,16 +12,27 @@ namespace KendoMvcDemo.Core.Persistence
     {
         private readonly DataContext _dataContext;
         private readonly IComponentContext _componentContext;
+        private readonly bool _useTransaction;
+        private readonly DbContextTransaction _transaction;
 
-        public UnitOfWork(IComponentContext componentContext) : this(new DataContext(), componentContext)
+        public UnitOfWork(IComponentContext componentContext, bool useTransaction = false) : this(new DataContext(), componentContext, useTransaction)
         {
 
         }
 
-        private UnitOfWork(DataContext dataContext, IComponentContext componentContext)
+        private UnitOfWork(DataContext dataContext, IComponentContext componentContext, bool useTransaction)
         {
             _dataContext = dataContext;
             _componentContext = componentContext;
+            _useTransaction = useTransaction;
+
+            if (_useTransaction)
+            {
+                if (_dataContext.Database.Connection.State != ConnectionState.Open)
+                    _dataContext.Database.Connection.Open();
+
+                _transaction = _dataContext.Database.BeginTransaction();
+            }
         }
 
         public T GetRepository<T>() where T : IRepository
@@ -32,9 +45,15 @@ namespace KendoMvcDemo.Core.Persistence
             try
             {
                 _dataContext.SaveChanges();
+
+                if (_useTransaction)
+                    _transaction?.Commit();
             }
             catch (Exception ex)
             {
+                if (_useTransaction)
+                    _transaction?.Rollback();
+
                 return UnitOfWorkOperationResult.Error(ex, "Data commited with error");
             }
 
@@ -61,6 +80,9 @@ namespace KendoMvcDemo.Core.Persistence
 
         public void Dispose()
         {
+            if (_useTransaction)
+                _transaction?.Dispose();
+
             _dataContext?.Dispose();
         }
     }

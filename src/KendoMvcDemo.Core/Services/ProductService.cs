@@ -57,7 +57,7 @@ namespace KendoMvcDemo.Core.Services
         {
             try
             {
-                using (IUnitOfWork uow = new UnitOfWork(_componentContext))
+                using (IUnitOfWork uow = new UnitOfWork(_componentContext, useTransaction: true))
                 {
                     var repository = uow.GetRepository<IProductRepository>();
                     repository.Update(model.ConvertToDomainModel());
